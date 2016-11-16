@@ -1,167 +1,86 @@
 <template>
-
-
-  <div id="header">
-    <div class="color-line">
-    </div>
-    <div id="logo" class="light-version">
-        <span>
-           偶啦餐饮
-        </span>
-    </div>
-    <nav role="navigation">
-      <div class="header-link hide-menu" @click="showside"><i class="fa fa-bars"></i></div>
-      <div class="small-logo">
-        <span class="text-primary">HOMER APP</span>
+    <header class="navbar navbar-fixed-top navbar-shadow bg-primary">
+      <div class="navbar-branding">
+        <a class="navbar-brand" href="">
+          妙享生活管理平台
+        </a>
+        <span id="toggle_sidemenu_l" class="ad ad-lines" @click="showSide"></span>
       </div>
-      <form role="search" class="navbar-form-custom" method="post" action="#">
-        <div class="form-group">
-          <input type="text" placeholder="搜索" class="form-control" name="search">
-        </div>
-      </form>
-      <div class="mobile-menu">
-        <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse"
-                data-target="#mobile-collapse">
-          <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="collapse mobile-navbar" id="mobile-collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <a class="" href="login.html">Login</a>
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown menu-merge hidden-xs">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">帮助
+            <span class="caret caret-tp"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="">关于幕然</a></li>
+            <li><a href="">更新日志</a></li>
+            <li><a href="">问题反馈</a></li>
+            <li class="divider"></li>
+            <li><a href="">使用说明</a></li>
+          </ul>
+        </li>
+        <li class="hidden-xs">
+          <a class="request-fullscreen toggle-active" href="#">
+            <span class="ad ad-screen-full fs18"></span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="dropdown menu-merge" ng-if="user.userTag === 0 && flag.withdraw">
+          <div class="btn-group mt15 mb15">
+            <h3 class="pull-left mt5 mr20 ">
+              账户余额: ￥<span id="my_balance" count-up ng-model="user.balance" data-num-decimals="0"
+                           data-animation-length="3"></span>
+            </h3>
+            <button class="btn btn-sm pull-right btn-system" ng-click="withDraw()" ng-disabled="!flag.withdraw">
+              <i class="glyphicons glyphicons-coins mr5"></i>提现
+            </button>
+          </div>
+        </li>
+        <li class="menu-divider hidden-xs">
+          <i class="fa fa-circle"></i>
+        </li>
+        <li class="dropdown menu-merge">
+
+
+          <a href="" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
+            <img src="../../assets/img/avatars/default2.png" alt="avatar" class="mw30 br64">
+            <span class="hidden-xs pl15"> {{user.name}} </span>
+            <span class="caret caret-tp hidden-xs"></span>
+          </a>
+          <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
+            <li class="dropdown-header clearfix">
+              <div class="pull-left ml10">
+
+              </div>
+
+              <div class="pull-right mr10">
+
+              </div>
             </li>
-            <li>
-              <a class="" v-link="{path:'/login'}">Logout</a>
+            <li class="list-group-item">
+              <a ui-sref="admin.usercenter.userinfo" class="animated animated-short fadeInUp">
+                <span class="fa fa-info"></span> 账户信息
+              </a>
             </li>
-            <li>
-              <a class="" href="profile.html">Profile</a>
+
+            <li class="list-group-item">
+              <a ui-sref="admin.usercenter.password" class="animated animated-short fadeInUp">
+                <span class="fa fa-lock"></span> 密码管理 </a>
+            </li>
+            <li class="list-group-item" ng-if="user.userTag === 0 && flag.withdraw">
+              <a ui-sref="admin.usercenter.withdraw" class="animated animated-short fadeInUp">
+                <span class="fa fa-cny"></span> 提款管理 </a>
+            </li>
+            <li class="dropdown-footer">
+              <a href="" class="" ng-click="logout()">
+                <span class="fa fa-power-off pr5"></span> 退出 </a>
             </li>
           </ul>
-        </div>
-      </div>
-      <div class="navbar-right">
-        <ul class="nav navbar-nav no-borders">
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="index.html#" data-toggle="dropdown">
-              <i class="pe-7s-speaker"></i>
-            </a>
-            <ul class="dropdown-menu hdropdown notification animated flipInX">
-              <li>
-                <a>
-                  <span class="label label-success">NEW</span> It is a long established.
-                </a>
-              </li>
-              <li>
-                <a>
-                  <span class="label label-warning">WAR</span> There are many variations.
-                </a>
-              </li>
-              <li>
-                <a>
-                  <span class="label label-danger">ERR</span> Contrary to popular belief.
-                </a>
-              </li>
-              <li class="summary"><a href="index.html#">See all notifications</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="index.html#" data-toggle="dropdown">
-              <i class="pe-7s-keypad"></i>
-            </a>
-
-            <div class="dropdown-menu hdropdown bigmenu animated flipInX">
-              <table>
-                <tbody>
-                <tr>
-                  <td>
-                    <a href="projects.html">
-                      <i class="pe pe-7s-portfolio text-info"></i>
-                      <h5>Projects</h5>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="mailbox.html">
-                      <i class="pe pe-7s-mail text-warning"></i>
-                      <h5>Email</h5>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="contacts.html">
-                      <i class="pe pe-7s-users text-success"></i>
-                      <h5>Contacts</h5>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="forum.html">
-                      <i class="pe pe-7s-comment text-info"></i>
-                      <h5>Forum</h5>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="analytics.html">
-                      <i class="pe pe-7s-graph1 text-danger"></i>
-                      <h5>Analytics</h5>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="file_manager.html">
-                      <i class="pe pe-7s-box1 text-success"></i>
-                      <h5>Files</h5>
-                    </a>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </li>
-          <li class="dropdown">
-            <a class="dropdown-toggle label-menu-corner" href="index.html#" data-toggle="dropdown">
-              <i class="pe-7s-mail"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu hdropdown animated flipInX">
-              <div class="title">
-                You have 4 new messages
-              </div>
-              <li>
-                <a>
-                  It is a long established.
-                </a>
-              </li>
-              <li>
-                <a>
-                  There are many variations.
-                </a>
-              </li>
-              <li>
-                <a>
-                  Lorem Ipsum is simply dummy.
-                </a>
-              </li>
-              <li>
-                <a>
-                  Contrary to popular belief.
-                </a>
-              </li>
-              <li class="summary"><a href="index.html#">See All Messages</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="index.html#" id="sidebar" class="right-sidebar-toggle">
-              <i class="pe-7s-upload pe-7s-news-paper"></i>
-            </a>
-          </li>
-          <li class="dropdown">
-            <a v-link="{path:'/login'}">
-              <i class="pe-7s-upload pe-rotate-90"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-
+        </li>
+      </ul>
+    </header>
 </template>
 <style>
 </style>
@@ -171,18 +90,20 @@
         name:'topbar',
         data(){
             return {
-
+              user:{name:'admin'}
             }
-        }, methods: {
-            showside: function (event) {
-                event.preventDefault();
-                if ($(window).width() < 769) {
-                    $("body").toggleClass("show-sidebar");
-                } else {
-                    $("body").toggleClass("hide-sidebar");
-                }
+        },
 
+        methods: {
+          showSide: function (event) {
+            event.preventDefault();
+            if ($(window).width() < 769) {
+              $("body").toggleClass.remove("sb-l-m sb-l-disable-animation");
+            } else {
+              $("body").toggleClass("sb-l-m sb-l-disable-animation");
             }
+
+          }
         }
     }
 
