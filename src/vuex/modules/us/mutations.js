@@ -3,7 +3,10 @@ import {
   START_LOADING,
   FINISH_LOADING,
   LOGIN_STATE,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  GET_ADMIN_INFO,
+  ERROR_STATE,
+  GET_MEMBER_LIST
 } from './mutation-type'
 
 const mutations = {
@@ -22,6 +25,18 @@ const mutations = {
   },
   [LOGIN_ERROR](state){
     state.auth=false
+  },
+  [GET_ADMIN_INFO](state,adminInfo)
+  {
+    state.userInfo=adminInfo
+  },
+  [ERROR_STATE](state){
+
+  },
+  [GET_MEMBER_LIST](state,data){
+    state.members=data.data;
   }
+
+
 }
 export default mutations

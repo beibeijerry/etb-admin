@@ -3,7 +3,6 @@
 
 import Vue from 'vue';
 export default {
-
     /**
 * 微信公众号开发时，调用此接口进行微信网页授权。授权完成后会在header中返回sessionid，每次授权完成后
 sessionid会自动更新，用户信息也会自动同步微信端信息进行更新。前端请求时需将sessionid放在header中进行
@@ -18,6 +17,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/wechats/oauth2';
 
             var body;
@@ -54,21 +54,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -82,6 +83,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/wechats/app/oauth2';
 
             var body;
@@ -112,21 +114,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -141,6 +144,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/wechats/jsconfig';
 
             var body;
@@ -164,21 +168,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -193,6 +198,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/wechats/media';
 
             var body;
@@ -218,21 +224,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -247,6 +254,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/wechats/menus';
 
             var body;
@@ -261,21 +269,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -290,6 +299,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/users/owninfo';
 
             var body;
@@ -304,21 +314,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -333,6 +344,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/users/{autoId}';
 
             var body;
@@ -354,21 +366,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -383,6 +396,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/users/{autoId}';
 
             var body;
@@ -415,21 +429,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -444,6 +459,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/users/{usId}/lock';
 
             var body;
@@ -476,21 +492,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -505,6 +522,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/users';
 
             var body;
@@ -557,21 +575,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -586,6 +605,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/login';
 
             var body;
@@ -620,21 +640,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -649,6 +670,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/loginout';
 
             var body;
@@ -663,21 +685,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'DELETE',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "DELETE".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -692,6 +715,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/resetpwd';
 
             var body;
@@ -726,21 +750,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -755,6 +780,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/{autoId}/resetpwd';
 
             var body;
@@ -778,21 +804,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -807,6 +834,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins';
 
             var body;
@@ -827,21 +855,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -856,6 +885,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins';
 
             var body;
@@ -870,21 +900,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -899,6 +930,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/groups/{groupId}';
 
             var body;
@@ -920,21 +952,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -949,6 +982,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/getbyusername/{username}';
 
             var body;
@@ -970,21 +1004,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -999,6 +1034,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/{autoId}';
 
             var body;
@@ -1026,21 +1062,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1055,6 +1092,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/{autoId}';
 
             var body;
@@ -1076,21 +1114,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1105,6 +1144,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/admins/{autoId}';
 
             var body;
@@ -1126,21 +1166,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'DELETE',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "DELETE".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1155,6 +1196,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/grades';
 
             var body;
@@ -1169,21 +1211,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1198,6 +1241,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/grades';
 
             var body;
@@ -1258,21 +1302,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1287,6 +1332,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/grades/{grade}';
 
             var body;
@@ -1355,21 +1401,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1384,6 +1431,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/grades/{grade}';
 
             var body;
@@ -1405,21 +1453,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1434,6 +1483,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/user/relation';
 
             var body;
@@ -1459,21 +1509,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1488,6 +1539,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/user/friend';
 
             var body;
@@ -1502,21 +1554,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1531,6 +1584,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/devices';
 
             var body;
@@ -1565,21 +1619,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1594,6 +1649,7 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/us/mobile/bind';
 
             var body;
@@ -1637,21 +1693,22 @@ sessionid会自动更新，用户信息也会自动同步微信端信息进行�
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
 }

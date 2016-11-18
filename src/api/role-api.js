@@ -3,7 +3,6 @@
 
 import Vue from 'vue';
 export default {
-
     /**
 * 根据权限组（菜单组）id获取权限集合，返回结果英文逗号分割。
 
@@ -16,6 +15,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/groupmenus/{groupId}';
 
             var body;
@@ -37,21 +37,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -66,6 +67,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/groupmenus';
 
             var body;
@@ -100,21 +102,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -129,6 +132,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menugroups/{autoId}';
 
             var body;
@@ -150,21 +154,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -179,6 +184,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menugroups/{autoId}';
 
             var body;
@@ -211,21 +217,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -240,6 +247,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menugroups/{autoId}';
 
             var body;
@@ -261,21 +269,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'DELETE',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "DELETE".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -290,6 +299,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menugroups';
 
             var body;
@@ -324,21 +334,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -353,6 +364,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menugroups';
 
             var body;
@@ -376,21 +388,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -405,6 +418,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus';
 
             var body;
@@ -500,21 +514,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -529,6 +544,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus';
 
             var body;
@@ -552,21 +568,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -581,6 +598,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus/{autoId}';
 
             var body;
@@ -602,21 +620,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -631,6 +650,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus/{autoId}';
 
             var body;
@@ -733,21 +753,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -762,6 +783,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus/{autoId}';
 
             var body;
@@ -783,21 +805,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'DELETE',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "DELETE".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -812,6 +835,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus/usermenus';
 
             var body;
@@ -826,21 +850,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -855,6 +880,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/menus/tree';
 
             var body;
@@ -869,21 +895,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -898,6 +925,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/rolerelations';
 
             var body;
@@ -949,21 +977,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -978,6 +1007,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/rolerelations';
 
             var body;
@@ -1027,21 +1057,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1056,6 +1087,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/rolerelations/{autoId}';
 
             var body;
@@ -1077,21 +1109,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1106,6 +1139,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/rolerelations/{autoId}';
 
             var body;
@@ -1164,21 +1198,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1193,6 +1228,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/rolerelations/{autoId}';
 
             var body;
@@ -1214,21 +1250,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'DELETE',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "DELETE".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1243,6 +1280,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/rolerelations/getbykey/{clientOperKey}';
 
             var body;
@@ -1264,21 +1302,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1293,6 +1332,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles';
 
             var body;
@@ -1358,21 +1398,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1387,6 +1428,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles';
 
             var body;
@@ -1437,21 +1479,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1466,6 +1509,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles/{autoId}';
 
             var body;
@@ -1487,21 +1531,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1516,6 +1561,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles/{autoId}';
 
             var body;
@@ -1588,21 +1634,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'PUT',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "PUT".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1617,6 +1664,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles/{autoId}';
 
             var body;
@@ -1638,21 +1686,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'DELETE',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "DELETE".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1667,6 +1716,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles/roleTree';
 
             var body;
@@ -1681,21 +1731,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1710,6 +1761,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/roles/isroleok/{roleKey}';
 
             var body;
@@ -1731,21 +1783,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1760,6 +1813,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/usermenugroups';
 
             var body;
@@ -1794,21 +1848,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1823,6 +1878,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/usermenugroups';
 
             var body;
@@ -1846,21 +1902,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1875,6 +1932,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/usermenugroups/adduser';
 
             var body;
@@ -1909,21 +1967,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -1938,6 +1997,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/role/usermenugroups/getuserbygroup';
 
             var body;
@@ -1961,21 +2021,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
 }

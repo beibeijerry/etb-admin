@@ -3,7 +3,6 @@
 
 import Vue from 'vue';
 export default {
-
     /**
      * 获取服务器的版本信息
      * @method
@@ -15,6 +14,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/sys/version';
 
             var body;
@@ -31,21 +31,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -59,6 +60,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/sys/sms';
 
             var body;
@@ -88,21 +90,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -116,6 +119,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/sys/files';
 
             var body;
@@ -136,21 +140,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -164,6 +169,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/sys/files/upLoadToken';
 
             var body;
@@ -197,21 +203,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -225,6 +232,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/sys/files/upload';
 
             var body;
@@ -250,21 +258,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'POST',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "POST".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
         /**
@@ -278,6 +287,7 @@ export default {
                 parameters = {};
             }
 
+            var domain = 'https://' + window.shop.domain + '/api';
             var path = '/sys/area';
 
             var body;
@@ -302,21 +312,22 @@ export default {
                         queryParameters[parameterName] = parameter;
                     });
             }
+            var url = domain + path;
             var options = {
                 timeout: parameters.$timeout,
                 method: 'GET',
-                url: path,
+                url: url,
                 params: queryParameters,
-                data: body,
+                body: body,
                 headers: headers
             };
             if (Object.keys(form).length > 0) {
-                options.data = form;
+                options.body = form;
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 options.emulateJSON = true;
             }
-            var mt = "GET".toLowerCase();
-            const req = Vue.http[mt](path, options.data, options);
+
+            const req = Vue.http(options);
             return req;
         },
 }

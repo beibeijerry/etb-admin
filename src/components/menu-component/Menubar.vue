@@ -28,7 +28,7 @@
 
       <!-- Start: Sidebar Left Menu -->
       <ul class="nav sidebar-menu">
-        <li v-for="menu in menus_data"  v-bind:class="{'sidebar-label pt20':menu.is_group,'active':(menu.isActive)}">
+        <li v-for="menu in menus_data" v-bind:class="{'sidebar-label pt20':menu.is_group,'active':(menu.isActive)}">
           <span v-if="menu.is_group">{{menu.name}}</span>
           <a class="accordion-toggle" v-if="menu.is_menu" :class="{'menu-open':menu.isOpen}">
             <span class="mr20" :class="menu.icon"></span>
@@ -65,8 +65,8 @@
             <span class="caret"></span>
           </a>
           <ul class="nav sub-nav" v-if="menu.is_fold">
-            <li v-for="sub in menu.menus" @click="subActive(sub)"  v-bind:class="{active:sub.isActive}">
-              <router-link :to="sub.path" >
+            <li v-for="sub in menu.menus" @click="subActive(sub)" v-bind:class="{active:sub.isActive}">
+              <router-link :to="sub.path">
                 <span :class="sub.icon"></span> {{sub.name}}
               </router-link>
             </li>
@@ -95,6 +95,7 @@
 
 <script>
   import {menus} from '../config'
+  import {mapGetters} from 'vuex'
   var flat = [];
   var flatMenu = function (menus) {
     flat = [];
@@ -113,7 +114,7 @@
       for (let j = 0; j < menu.menus.length; j++) {
         let sub = menu.menus[j];
         sub.parent = menu;
-        sub.isActive=false;
+        sub.isActive = false;
         if (sub.type === 'fold1') {
           sub.is_fold1 = true;
         }
@@ -183,10 +184,15 @@
   export default{
     data(){
       return {
-        user: {name: 'admin'},
         menus_data: data,
         isActive: false,
       }
+    },
+    computed: {
+      ...mapGetters({
+        user: 'getUserInfo',
+        auth: 'getAuthState'
+      })
     },
     beforeCreate: function () {
       data = flatMenu(menus);
@@ -196,20 +202,24 @@
     },
     methods: {
       subActive: function (sub) {
-        for (let m of this.menus_data) {
-          if (m.name === sub.name && m.type === sub.type) {
-            m.isActive=true;
-          }else {
-            m.isActive=false;
+//        if (this.auth) {
+          for (let m of this.menus_data) {
+            if (m.name === sub.name && m.type === sub.type) {
+              m.isActive = true;
+            } else {
+              m.isActive = false;
+            }
+            this.isActive = m.isActive;
           }
-          this.isActive=m.isActive;
-        }
-        if (sub.isOpen) {
-          sub.parent.isOpen = true;
-        }
-        var para=this.$router.currentRoute;
-        this.$store.dispatch('updateBread', para);
-        return sub;
+          if (sub.isOpen) {
+            sub.parent.isOpen = true;
+          }
+          var para = this.$router.currentRoute;
+          this.$store.dispatch('updateBread', para);
+          return sub;
+//        }else {
+//          this.$router.push({name: 'login'});
+//        }
       }
 
     },

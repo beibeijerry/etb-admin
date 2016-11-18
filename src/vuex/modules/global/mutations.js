@@ -1,5 +1,6 @@
 import {
-  UPDATE_BREAD
+  UPDATE_BREAD,
+  GET_PAGE_DATA
 }  from './mutation-type'
 import {bread} from '../../../components/config'
 const mutations = {
@@ -16,6 +17,10 @@ const mutations = {
         parent = parent_node.parent;
       }
     }
+  },
+  [GET_PAGE_DATA](state,param){
+    state.pageData=param;
   }
+
 }
 export default mutations

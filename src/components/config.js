@@ -35,7 +35,7 @@ export const menus=[
 ]
 
 export const bread={
-  'welcome': {parent: '', text: '妙享生活管理平台', href: '/welcome'},
+  'welcome': {parent: '', text: '吃托邦管理平台', href: '/welcome'},
   'member': {parent: 'welcome', text: '会员管理', href: '/member'},
   'memberLevel': {parent: 'welcome', text: '会员级别设置', href: '/memberLevel'},
 

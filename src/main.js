@@ -20,7 +20,7 @@ import store from './vuex/store'
 import Member from './pages/user/Member.vue'
 import MemberLevel from './pages/user/MemberLevel.vue'
 import lodash from 'lodash'
-
+import '../config/conf'
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
@@ -28,14 +28,18 @@ Vue.use(VueValidator);
 Vue.use(VueResource);
 Vue.use(lodash);
 
+var VueNotify = require('vue-notify');
+Vue.use(VueNotify);
+window.notify = new VueNotify({
+      maxLength: 3
+});
 
 Vue.config.devtools = true;
 var eventHub = new Vue();
 // VueResource 配置
-Vue.http.options.root =env.api_path;
+
 Vue.http.interceptors.push((request,next)=>{
- request.url=env.api_path+request.url;
-  var sessionId = localStorage.getItem("sessionId");
+  var sessionId = window.sessionStorage.getItem("sessionId");
   if(sessionId!=null)
     request.headers.set('session-id', sessionId);
   request.headers.set('user-sys', env.user_sys);
@@ -46,9 +50,8 @@ Vue.http.interceptors.push((request,next)=>{
   next((response)=>{
     if (response.status === 400 || response.status === 401) {
       // 当 sessionId 已经失效时，清空所有保存在 localStorage 的数据
-      localStorage.clear();
+      window.sessionStorage.clear();
     }
-
   });
 })
 

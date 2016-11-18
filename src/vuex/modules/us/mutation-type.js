@@ -3,3 +3,7 @@ export const START_LOADING = 'START_LOADING'
 export const FINISH_LOADING = 'FINISH_LOADING'
 export const LOGIN_STATE='LOGIN_STATE'
 export const LOGIN_ERROR='LOGIN_ERROR'
+export const GET_ADMIN_INFO='GET_ADMIN_INFO'
+export const GET_MEMBER_LIST='GET_MEMBER_LIST'
+
+export const ERROR_STATE='ERROR_STATE'//错误状态

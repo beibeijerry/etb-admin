@@ -1,16 +1,17 @@
+var url = domain + path;
 var options = {
 timeout: parameters.$timeout,
 method: '{{method}}',
-url: path,
+url: url,
 params: queryParameters,
-data: body,
+body: body,
 headers: headers
 };
 if(Object.keys(form).length > 0) {
-options.data = form;
+options.body = form;
 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 options.emulateJSON = true;
 }
-var mt="{{&method}}".toLowerCase();
-const req=Vue.http[mt](path,options.data,options);
+
+const req=Vue.http(options);
 return req;

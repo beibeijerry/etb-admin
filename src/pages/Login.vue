@@ -47,11 +47,13 @@
         </div>
       </div>
     </div>
+
 </div>
 </template>
 
 <script>
   import md5 from 'js-md5'
+  import { alert } from 'vue-strap'
   export default {
     name: 'login',
     data () {
@@ -61,7 +63,9 @@
         check: false,
         username: '',
         password: '',
-        companyName: '幕然科技'
+        companyName: '幕然科技',
+        showRight: false,
+        showTop: false
       }
     },
     mounted: function () {
@@ -75,11 +79,16 @@
       Login: function () {
         var para = {username: this.username, password: md5(this.password)};
         this.$store.dispatch('adminLogin', para).then((ret)=> {
+          this.showTop=true;
           this.$router.push({name: 'main'});
+
         }, (error)=> {
           console.log(error.data.info);
         });
       }
+    },
+    components: {
+      alert
     }
   }
 
