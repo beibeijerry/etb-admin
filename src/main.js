@@ -21,6 +21,7 @@ import Member from './pages/user/Member.vue'
 import MemberLevel from './pages/user/MemberLevel.vue'
 import lodash from 'lodash'
 import '../config/conf'
+import * as filters from './filters'
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
@@ -61,9 +62,10 @@ Vue.validator('email', (val) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.
 Vue.validator('url', (val) => /^(http\u003a\/\/|https\u003a\/\/)(.{4,})$/.test(val));
 
 // 自定义过滤器
-// Vue.filter('moment', require('./filters/moment'));
-// Vue.filter('commonmark', require('./filters/commonmark'));
-// Vue.filter('thumbnail', require('./filters/thumbnail'));
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 global.jQuery = require('jquery');
 var $ = global.jQuery;
 window.$ = $;

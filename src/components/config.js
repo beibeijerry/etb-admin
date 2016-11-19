@@ -81,3 +81,68 @@ export const bread={
   'admin.sys.edit':{parent:'admin.sys.account',text:'修改员工',href:'admin.sys.edit'},
 }
 
+export const  states={
+  cardStatus: [
+    {val: 0, name: '无效'},
+    {val: 1, name: '有效'},
+    {val: 2, name: '已消费'}
+    ],
+  billType: [
+    {val: 1, name: '摇红包'},
+    {val: 2, name: '签到'},
+    {val: 3, name: 'VIP红包'},
+    {val: 4, name: '用户充值'},
+    {val: 5, name: '充值卡'},
+    {val: 6, name: '用户推荐佣金'},
+    {val: 7, name: '用户商城消费'},
+    {val: 8, name: '经销商返佣'},
+    {val: 9, name: '经销商结算'},
+    {val: 10, name: '自营商品退款'},
+    {val: 11, name: '供货商商品购买'},
+    {val: 12, name: '供货商商品退款'},
+    {val: 13, name: '供货商结算'}
+    ],
+  rpType: [
+    {val: 0, name: '普通红包'},
+    {val: 1, name: '特权红包'}
+    ],
+  rpStatus: [
+    {val: 0, name: '未开始'},
+    {val: 1, name: '进行中'},
+    {val: 2, name: '已领完'}
+    ],
+  national: [
+    {val: '汉族', name: '汉族'}
+    ],
+  gender: [
+    {val: false, name: '女'},
+    {val: true, name: '男'}
+    ],
+  TrueOrFalse: [
+    {val: true, name: '是'},
+    {val: false, name: '否'}
+    ],
+  GoodsStatus:[
+    {val:0,name:'编辑中'},
+    {val:1,name:'已上架'},
+    {val:2,name:'已下架'},
+    {val:3,name:'已删除'},
+    {val:4,name:'待审核'},
+    {val:5,name:'已驳回'}
+    ],
+  OrderStatus:[
+    {val:0,name:'待付款'},
+    {val:1,name:'待发货'},
+    {val:2,name:'已发货'},
+    {val:3,name:'待评价'},
+    {val:4,name:'已完毕'},
+    {val:5,name:'关闭'},
+    ],
+  RefundOrderStatus:[
+    {val:0,name:'退货/退款申请'},
+    {val:1,name:'待买家发货'},
+    {val:2,name:'退货/退款申请驳回'},
+    {val:3,name:'买家已发货'},
+    {val:4,name:'退货/退款完成'},
+    ]
+}

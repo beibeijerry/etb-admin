@@ -2,7 +2,8 @@ import us from '../../../api/us-api'
 
 import {
   LOGIN_STATE,LOGIN_ERROR,GET_ADMIN_INFO
-  ,GET_MEMBER_LIST,ERROR_STATE,GET_MEMBER_LEVEL_LIST
+  ,GET_MEMBER_LIST,ERROR_STATE,GET_MEMBER_LEVEL_LIST,
+  GET_MEMBER_DETAIL
 } from './mutation-type'
 
 //登陆
@@ -46,3 +47,14 @@ export const getMemberLevelList=({commit})=>{
   return req;
 };
 
+//会员详情
+export const getMemberDetail=({commit},params)=>{
+  const req=us.getUserInfo(params).then((ret)=>{
+    commit(GET_MEMBER_DETAIL, ret.data);
+    return Promise.resolve(ret);
+  }).catch((error)=>{
+    commit(ERROR_STATE, error.data);
+    return Promise.reject(error);
+  })
+  return req;
+};

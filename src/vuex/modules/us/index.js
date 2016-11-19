@@ -17,7 +17,8 @@ const state = {
     totalRecord:0,
     data:[]
   },
-  membersLevelList:[]
+  membersLevelList:[],
+  memberDetail:{}
 }
 
 export default{

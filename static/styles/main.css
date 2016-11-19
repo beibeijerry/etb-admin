@@ -327,6 +327,7 @@ div.dt-panelfooter ul.pagination {
 
 .popup-basic {
   margin: 0 !important;
+  z-index: 1000;
 }
 
 .angular-ui-tree-handle {

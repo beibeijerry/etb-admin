@@ -7,7 +7,8 @@ import {
   GET_ADMIN_INFO,
   ERROR_STATE,
   GET_MEMBER_LIST,
-  GET_MEMBER_LEVEL_LIST
+  GET_MEMBER_LEVEL_LIST,
+  GET_MEMBER_DETAIL
 } from './mutation-type'
 
 const mutations = {
@@ -40,6 +41,9 @@ const mutations = {
   [GET_MEMBER_LEVEL_LIST](state,data){
     data.unshift({name: '全部'})
     state.membersLevelList=data;
+  },
+  [GET_MEMBER_DETAIL](state,data){
+    state.memberDetail=data;
   }
 
 }

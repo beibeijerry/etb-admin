@@ -1,5 +1,7 @@
 <template>
+
   <div>
+
     <div class="table-layout">
       <!-- begin: .tray-center -->
       <div class="p20 va-t">
@@ -96,13 +98,13 @@
                   </td>
                   <td class="w200" data-title="'姓名'" sortable="'title'">{{item.name}}</td>
                   <td class="mnw100" data-title="'会员级别'">{{item.gradeName}}</td>
-                  <td class="w50" data-title="'性别'">{{item.gender}}</td>
+                  <td class="w50" data-title="'性别'">{{item.gender | statesName('gender')}}</td>
                   <td class="mnw100" data-title="'邀请码'">{{item.inviteCode}}</td>
                   <td class="w80" data-title="'已邀请人数'">{{item.inviteCount}}</td>
                   <td class="mnw100" data-title="'注册时间'">{{item.createTime}}</td>
                   <td class="w200" data-title="'操作'">
                     <button class="btn btn-xs btn-success"
-                            @click="entry(item)">详情
+                            @click="showDialog(1,item.usId)">详情
                     </button>
                     <button class="btn btn-xs btn-danger" @click="lock(item,true)" v-if="!item.isLock">
                       禁用
@@ -125,6 +127,153 @@
 
       </div>
     </div>
+    <etb-dialog v-if="dialog1Show" type="alert" title="会员信息"
+                confirm-button="关闭" cancel-button="不关闭"
+                @weui-dialog-confirm="handleDialogAction('确定', 1)"
+                @weui-dialog-cancel="handleDialogAction('取消', 1)" :width="width">
+      <div style="height:5px"></div>
+      <div class="panel" style="margin: 10px 10px">
+        <div class="panel-heading">
+          <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+            <li class="active">
+              <a href="#tab1_1" data-toggle="tab" aria-expanded="true">会员信息</a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="panel-body">
+          <div class="tab-content pn br-n">
+            <div id="tab1_1" class="tab-pane active">
+              <div class="row">
+                <div class="col-md-3">
+                  <img :src="the_detail.person.avatar" class="img-responsive thumbnail mr25">
+                </div>
+                <div class="col-md-9">
+                  <table class="table table-striped">
+                    <colgroup>
+                      <col class="col-xs-2">
+                      <col class="col-xs-3">
+                      <col class="col-xs-2">
+                      <col class="col-xs-3">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                      <td>姓名</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.person.name}}
+                        </div>
+                      </td>
+                      <td>用户名</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.person.username}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>性别</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.person.gender}}
+                        </div>
+                      </td>
+                      <td>手机号</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.person.mobile}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>生日</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.person.birthday}}
+                        </div>
+                      </td>
+                      <td>注册时间</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.person.createTime}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>会员级别</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.relation.grade.name}}
+                        </div>
+                      </td>
+                      <td>邀请码</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.relation.inviteCode}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>邀请人数</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.relation.inviteCount}}
+                        </div>
+                      </td>
+                      <td>最大邀请人数</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.relation.grade.inviteMax}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>红包返佣比例</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.relation.grade.rpBonus}}%
+                        </div>
+                      </td>
+                      <td>充值返佣比例</td>
+                      <td>
+                        <div class="bs-component">
+                          {{the_detail.relation.grade.payBonus}}%
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>余额</td>
+                      <td colspan="3">
+                        <div class="bs-component">
+                          {{the_detail.banlance}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>介绍人</td>
+                      <td colspan="3">
+                        <div class="bs-component">
+                          {{the_detail.relation.intro==null?'':the_detail.relation.intro.person.name}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>邀请地址</td>
+                      <td colspan="3">
+                        <div class="bs-component">
+                          {{the_detail.relation.inviteUrl}}
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </etb-dialog>
   </div>
 </template>
 
@@ -138,16 +287,16 @@
   import calendar from "../../components/calendar-component/calendar.vue"
   import itemSelect from '../../components/DropdownList/Dropdown.vue'
   import {isUndefined} from '../../components/utils/utils'
-  import Vue from 'vue'
   import {mapGetters} from 'vuex'
   import moment from 'moment'
+  import dialog from '../../components/dialog'
   export default{
     data(){
       return {
         search_info: {
-          grade:'',
-          startTime:this.startTime,
-          endTime:this.endTime
+          grade: '',
+          startTime: this.startTime,
+          endTime: this.endTime
         },
         disabled: [],
         format: 'yyyy-MM-dd ',
@@ -155,12 +304,16 @@
         startTime: '',
         endTime: '',
         placeholder: '',
+        dialog1Show: false,
+        the_detail:{},
+        width:960
       }
     },
     computed: {
       ...mapGetters({
         members: 'getMembers',
-        memberLevels: 'getMemberLevelList'
+        memberLevels: 'getMemberLevelList',
+        the_detail:'getMemberDetail'
       })
     },
 
@@ -168,12 +321,13 @@
       pager,
       'inputText': inputText,
       calendar,
-      itemSelect
+      itemSelect,
+      'etbDialog': dialog
     },
+
     mounted: function () {
       this.getLevelList();
       this.getPageList(1);
-
     },
     methods: {
       dateStartChange: function (val) {
@@ -195,7 +349,25 @@
       },
       getLevelList: function () {
         this.$store.dispatch('getMemberLevelList');
+      },
+      showDialog(id,autoId) {
+        this[`dialog${id}Show`] = true;
+        if (this.dialog1Show){
+          this.getMemberDetail(autoId);
+        }
+
+      },
+      handleDialogAction(action, id) {
+        if (action === '确定') {
+          this[`dialog${id}Show`] = false;
+        } else {
+          alert('你点击了“不关闭”，所以对话框不会消失^^');
+        }
+      },
+      getMemberDetail:function (id) {
+        this.$store.dispatch('getMemberDetail',{'autoId':id});
       }
+
     }
   }
 </script>
