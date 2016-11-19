@@ -1,7 +1,8 @@
 import us from '../../../api/us-api'
+
 import {
   LOGIN_STATE,LOGIN_ERROR,GET_ADMIN_INFO
-  ,GET_MEMBER_LIST,ERROR_STATE
+  ,GET_MEMBER_LIST,ERROR_STATE,GET_MEMBER_LEVEL_LIST
 } from './mutation-type'
 
 //登陆
@@ -31,6 +32,17 @@ export const getMembers=({commit},params)=>{
     return Promise.reject(error);
   });
   return req;
-}
+};
 
+//会员级别
+export const getMemberLevelList=({commit})=>{
+  const req=us.getGradeList().then((ret)=>{
+    commit(GET_MEMBER_LEVEL_LIST, ret.data);
+    return Promise.resolve(ret);
+  }).catch((error)=>{
+    commit(ERROR_STATE, error.data);
+    return Promise.reject(error);
+  })
+  return req;
+};
 

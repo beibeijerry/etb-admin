@@ -16,7 +16,8 @@ const state = {
     pageSize: 10,
     totalRecord:0,
     data:[]
-  }
+  },
+  membersLevelList:[]
 }
 
 export default{

@@ -114,8 +114,7 @@
         default: false
       },
       value: {
-        type: String,
-        default:Date.now()
+        type: String
       },
       format: {
         default: 'MM/dd/yyyy'
@@ -532,6 +531,7 @@
             }
           }
         }
+        this.$emit('on-date-change',this.inputValue)
       }
     }
   }

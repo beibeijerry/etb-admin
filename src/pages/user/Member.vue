@@ -26,13 +26,33 @@
                         <div class="col-md-3">
                           <div class="section">
                             <div class="form-group">
-                              <calendar label="注册时间" :value="value" :disabled-days-of-week="disabled" :format="format"
-                                        :clearButton="clear" :placeholder="placeholder"></calendar>
+                              <calendar label="注册开始时间" :value="startTime" :disabled-days-of-week="disabled"
+                                        :format="format"
+                                        :clearButton="clear" :placeholder="placeholder"
+                                        @on-date-change="dateStartChange"></calendar>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="section">
+                            <div class="form-group">
+                              <calendar label="注册截止时间" :value="endTime" :disabled-days-of-week="disabled"
+                                        :format="format"
+                                        :clearButton="clear" :placeholder="placeholder"
+                                        @on-date-change="dateEndChange"></calendar>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="row">
+                        <div class="col-md-3">
+                          <div class="section">
+                            <div class="form-group">
+                              <item-select title="会员级别" :itemData="memberLevels" valKey="grade" nameKey="name"
+                                           @on-change="levelChange"></item-select>
+                            </div>
+                          </div>
+                        </div>
                         <div class="col-md-3">
                           <div class="section">
                             <div class="form-group">
@@ -98,7 +118,8 @@
           </div>
           <!--分页-->
           <div style="text-align: center">
-            <pager :pageIndex="members.pageIndex" :pageSize="members.pageSize" :pageTotal="members.pageTotal" @on-change="getPageList"></pager>
+            <pager :pageIndex="members.pageIndex" :pageSize="members.pageSize" :pageTotal="members.pageTotal"
+                   @on-change="getPageList"></pager>
           </div>
         </div>
 
@@ -115,43 +136,66 @@
   import pager from '../../components/table-pager/Pager.vue'
   import inputText from '../../components/input-component/input-text.vue'
   import calendar from "../../components/calendar-component/calendar.vue"
+  import itemSelect from '../../components/DropdownList/Dropdown.vue'
+  import {isUndefined} from '../../components/utils/utils'
   import Vue from 'vue'
   import {mapGetters} from 'vuex'
-  var vm=new Vue();
+  import moment from 'moment'
   export default{
     data(){
       return {
-        search_info: {},
+        search_info: {
+          grade:'',
+          startTime:this.startTime,
+          endTime:this.endTime
+        },
         disabled: [],
-        value: '',
-        format: 'yyyy-MM-dd',
+        format: 'yyyy-MM-dd ',
         clear: true,
-        placeholder: 'placeholder is displayed when value is null or empty',
+        startTime: '',
+        endTime: '',
+        placeholder: '',
       }
     },
     computed: {
       ...mapGetters({
-        members: 'getMembers'
-      }),
+        members: 'getMembers',
+        memberLevels: 'getMemberLevelList'
+      })
     },
 
     components: {
       pager,
       'inputText': inputText,
-      calendar
+      calendar,
+      itemSelect
     },
     mounted: function () {
+      this.getLevelList();
       this.getPageList(1);
+
     },
     methods: {
+      dateStartChange: function (val) {
+        this.search_info.startTime = isUndefined(val) || val === '' ? null : moment(val).format('YYYY-MM-DD HH:mm:ss');
+
+      },
+      dateEndChange: function (val) {
+        this.search_info.endTime = isUndefined(val) || val === '' ? null : moment(val).format('YYYY-MM-DD HH:mm:ss');
+      },
+      levelChange: function (val) {
+        this.search_info.grade = val;
+      },
       search: function () {
         this.getPageList(1);
       },
       getPageList: function (curPage) {
         var para = {pageIndex: curPage, pageSize: this.members.pageSize, ...this.search_info};
         this.$store.dispatch('getMembers', para);
+      },
+      getLevelList: function () {
+        this.$store.dispatch('getMemberLevelList');
       }
-
     }
   }
 </script>

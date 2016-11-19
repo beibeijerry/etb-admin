@@ -6,7 +6,8 @@ import {
   LOGIN_ERROR,
   GET_ADMIN_INFO,
   ERROR_STATE,
-  GET_MEMBER_LIST
+  GET_MEMBER_LIST,
+  GET_MEMBER_LEVEL_LIST
 } from './mutation-type'
 
 const mutations = {
@@ -35,8 +36,11 @@ const mutations = {
   },
   [GET_MEMBER_LIST](state,data){
     state.members=data.data;
+  },
+  [GET_MEMBER_LEVEL_LIST](state,data){
+    data.unshift({name: '全部'})
+    state.membersLevelList=data;
   }
-
 
 }
 export default mutations
