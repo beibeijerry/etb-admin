@@ -81,9 +81,6 @@
         this.$store.dispatch('adminLogin', para).then((ret)=> {
           this.showTop=true;
           this.$router.push({name: 'main'});
-
-        }, (error)=> {
-          console.log(error.data.info);
         });
       }
     },

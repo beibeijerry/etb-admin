@@ -10,6 +10,7 @@ import {
   GET_MEMBER_LEVEL_LIST,
   GET_MEMBER_DETAIL
 } from './mutation-type'
+import {SHOW_ALERT_DATA} from '../global/mutation-type'
 
 const mutations = {
   // 切换左侧导航的显示状态
@@ -32,7 +33,7 @@ const mutations = {
   {
     state.userInfo=adminInfo
   },
-  [ERROR_STATE](state){
+  [ERROR_STATE](state,msg){
 
   },
   [GET_MEMBER_LIST](state,data){

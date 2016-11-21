@@ -1,3 +1,3 @@
 
 export const UPDATE_BREAD='UPDATE_BREAD'
-export const GET_PAGE_DATA='GET_PAGE_DATA'
+export const SHOW_ALERT_DATA='SHOW_ALERT_DATA'

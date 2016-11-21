@@ -20,6 +20,7 @@ import store from './vuex/store'
 import Member from './pages/user/Member.vue'
 import MemberLevel from './pages/user/MemberLevel.vue'
 import lodash from 'lodash'
+
 import '../config/conf'
 import * as filters from './filters'
 Vue.use(Vuex);
@@ -36,9 +37,8 @@ window.notify = new VueNotify({
 });
 
 Vue.config.devtools = true;
-var eventHub = new Vue();
-// VueResource 配置
 
+// VueResource 配置
 Vue.http.interceptors.push((request,next)=>{
   var sessionId = window.sessionStorage.getItem("sessionId");
   if(sessionId!=null)
@@ -90,5 +90,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: {App}
+  components: {App,alert}
 });

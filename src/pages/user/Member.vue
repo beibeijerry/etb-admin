@@ -305,15 +305,15 @@
         endTime: '',
         placeholder: '',
         dialog1Show: false,
-        the_detail:{},
-        width:960
+        the_detail: {},
+        width: 960
       }
     },
     computed: {
       ...mapGetters({
         members: 'getMembers',
         memberLevels: 'getMemberLevelList',
-        the_detail:'getMemberDetail'
+        the_detail: 'getMemberDetail'
       })
     },
 
@@ -350,9 +350,9 @@
       getLevelList: function () {
         this.$store.dispatch('getMemberLevelList');
       },
-      showDialog(id,autoId) {
+      showDialog(id, autoId) {
         this[`dialog${id}Show`] = true;
-        if (this.dialog1Show){
+        if (this.dialog1Show) {
           this.getMemberDetail(autoId);
         }
 
@@ -364,8 +364,13 @@
           alert('你点击了“不关闭”，所以对话框不会消失^^');
         }
       },
-      getMemberDetail:function (id) {
-        this.$store.dispatch('getMemberDetail',{'autoId':id});
+      getMemberDetail: function (id) {
+        this.$store.dispatch('getMemberDetail', {'autoId': id});
+      },
+      lock: function (item, islock) {
+        this.$store.dispatch('lockUser', {'usId': item.usId, 'lock': islock}).then((ret)=> {
+          this.getPageList(this.members.pageIndex);
+        })
       }
 
     }

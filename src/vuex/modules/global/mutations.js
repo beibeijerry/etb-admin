@@ -1,6 +1,6 @@
 import {
   UPDATE_BREAD,
-  GET_PAGE_DATA
+  SHOW_ALERT_DATA
 }  from './mutation-type'
 import {bread} from '../../../components/config'
 const mutations = {
@@ -18,8 +18,8 @@ const mutations = {
       }
     }
   },
-  [GET_PAGE_DATA](state,param){
-    state.pageData=param;
+  [SHOW_ALERT_DATA](state,param){
+    state.alert=param;
   }
 
 }
