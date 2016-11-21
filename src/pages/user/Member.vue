@@ -58,6 +58,13 @@
                         <div class="col-md-3">
                           <div class="section">
                             <div class="form-group">
+                              <file-upload  label="主图"></file-upload>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="section">
+                            <div class="form-group">
                               <div class="col-md-12">
                                 <button class="button btn-primary btn-md" type="submit" @click="search">查询</button>
                               </div>
@@ -285,11 +292,12 @@
   import pager from '../../components/table-pager/Pager.vue'
   import inputText from '../../components/input-component/input-text.vue'
   import calendar from "../../components/calendar-component/calendar.vue"
-  import itemSelect from '../../components/DropdownList/Dropdown.vue'
+  import itemSelect from '../../components/dropdownList/Dropdown.vue'
   import {isUndefined} from '../../components/utils/utils'
   import {mapGetters} from 'vuex'
   import moment from 'moment'
   import dialog from '../../components/dialog'
+  import upload from '../../components/upload'
   export default{
     data(){
       return {
@@ -322,7 +330,8 @@
       'inputText': inputText,
       calendar,
       itemSelect,
-      'etbDialog': dialog
+      'etbDialog': dialog,
+      'fileUpload':upload,
     },
 
     mounted: function () {
