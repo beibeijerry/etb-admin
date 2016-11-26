@@ -20,9 +20,17 @@ import store from './vuex/store'
 import Member from './pages/user/Member.vue'
 import MemberLevel from './pages/user/MemberLevel.vue'
 import lodash from 'lodash'
-
+import publish from 'pages/sh/publish.vue'
+import welcome from 'pages/welcome.vue'
 import '../config/conf'
 import * as filters from './filters'
+
+import editor from 'vue-summernote'
+// 载入bootstrap.js
+require('bootstrap')
+// 载入bootstrap以及summernote的样式
+// 这里需要你的脚手架工具具有加载css的能力
+require('summernote/dist/summernote.css')
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
@@ -30,11 +38,10 @@ Vue.use(VueValidator);
 Vue.use(VueResource);
 Vue.use(lodash);
 
-var VueNotify = require('vue-notify');
-Vue.use(VueNotify);
-window.notify = new VueNotify({
-      maxLength: 3
+Vue.use(editor,{
+  dialogsFade:true
 });
+
 
 Vue.config.devtools = true;
 
@@ -66,9 +73,10 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
-global.jQuery = require('jquery');
-var $ = global.jQuery;
-window.$ = $;
+// var jQuery = require('jquery');
+// var $ = jQuery;
+// window.$ = $;
+
 var router = new VueRouter({
   history:true,
   saveScrollPosition: false,
@@ -77,8 +85,10 @@ var router = new VueRouter({
   routes: [
     {path: '/login', name:'login', component: Login},
     {path: '/main', name:'main',component: Main,children:[
+      {path:'/welcome',name:'welcome',component:welcome},
       {path:'/member',name:'member',component:Member},
       {path:'/memberLevel',name:'memberLevel',component:MemberLevel},
+      {path:'/publish',name:'publish',component:publish}
     ]},
     {path: '*', redirect: '/login'},
   ]

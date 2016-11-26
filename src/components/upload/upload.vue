@@ -3,52 +3,29 @@
     <div class="bs-component">
       <div class="input-group">
         <span class="input-group-addon">
-        <i class="mr5" :class="icon" v-if="icon"></i>{{label}}
-         </span>
-        <div class="field input-text form-control" style="text-align:right;">
-
-          <vue-file-upload :url="url"
-                           :files="files"
-                           :filters="filters"
-                           :events="cbEvents"
-                           :request-options="reqopts"
-                           :autoUpload=true class="btn-primary">
-
-
-          </vue-file-upload>
-          <!--<table>-->
-            <!--<thead>-->
-            <!--<tr>-->
-              <!--<th>name</th>-->
-              <!--<th>size</th>-->
-              <!--<th>progress</th>-->
-              <!--<th>status</th>-->
-              <!--<th>action</th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr v-for="file in files">-->
-              <!--<td>{{file.name}}</td>-->
-              <!--<td>{{file.size}}</td>-->
-              <!--<td>{{file.progress}}</td>-->
-              <!--<td>{{onStatus(file)}}</td>-->
-              <!--<td>-->
-                <!--<button @click="uploadItem(file)"></button>-->
-                <!--上传-->
-              <!--</td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-          <!--</table>-->
-          <!--<button @click="uploadAll">上传所有文件</button>-->
-        </div>
+         <i class="mr5" :class="icon" v-if="icon"></i>{{label}}
+        </span>
+          <!--<input class="field file" v-show="!isButton" :class="{'state-error':!isValid}">-->
+          <!--<span class="button btn-primary"> {{title}}</span>-->
+          <!--<input type="file" class="gui-file" v-model="selected" >-->
+          <!--<input type="text"-->
+                 <!--class="gui-input"-->
+                 <!--:placeholder="placeholder"-->
+                 <!--v-model="result"-->
+                 <!--required="isRequired">-->
+        <!--</label>-->
+        <!--<button v-model="selected"-->
+                <!--class="btn btn-default"-->
+                <!--v-show="isButton">-->
+          <!--{{title}}-->
+        <!--</button>-->
       </div>
     </div>
-  </div>
   </div>
 
 </template>
 <script>
-  import VueFileUpload from 'vue-file-upload';
+
   export default{
     name: 'file-upload',
     props: {
@@ -58,11 +35,20 @@
       },
       label: {
         type: String
+      },
+      title: {
+        type: String
+      },
+      placeholder:{
+        type:String
       }
 
     },
     data(){
       return {
+        isButton:true,
+        result:{},
+        selected:[],
         files: [],
         //文件过滤器，只能上传图片
         filters: [
@@ -114,7 +100,6 @@
       }
     },
     components: {
-      VueFileUpload
     }
   }
 </script>

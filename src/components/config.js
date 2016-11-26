@@ -20,7 +20,7 @@ export const menus=[
     },
     {
       name: '商城管理', type: 'fold', icon: 'imoon imoon-cart3', menus: [
-      {name: '发布宝贝', type: 'sub', icon: 'imoon imoon-quill', path: 'admin.goods.publish({action:"publish"})'},
+      {name: '发布宝贝', type: 'sub', icon: 'imoon imoon-quill', path: '/publish'},
       {name: '仓库管理', type: 'sub', icon: 'imoon imoon-cabinet', path: 'admin.goods.warehouse'},
       {name: '订单管理', type: 'sub', icon: 'imoon imoon-file2', path: 'admin.goods.order'},
       {name: '退换货', type: 'sub', icon: 'imoon imoon-file2', path: 'admin.goods.afterorder'},
@@ -59,7 +59,7 @@ export const bread={
   'admin.card.list': {parent: 'admin.welcome', text: '查询充值卡', href: 'admin.card.list'},
   'admin.card.history': {parent: 'admin.welcome', text: '充值历史查询', href: 'admin.card.history'},
 
-  'admin.goods.publish': {parent: 'admin.welcome', text: '发布宝贝', href: 'admin.goods.publish'},
+  'publish': {parent: 'welcome', text: '发布宝贝', href: '/publish'},
   'admin.goods.edit': {parent: 'admin.welcome', text: '编辑宝贝', href: 'admin.goods.edit'},
   'admin.goods.warehouse': {parent: 'admin.welcome', text: '仓库管理', href: 'admin.goods.warehouse'},
   'admin.goods.order': {parent: 'admin.welcome', text: '订单管理', href: 'admin.goods.order'},
