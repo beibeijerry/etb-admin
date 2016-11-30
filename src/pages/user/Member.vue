@@ -307,7 +307,7 @@
           endTime: this.endTime
         },
         disabled: [],
-        format: 'yyyy-MM-dd ',
+        format: 'yyyy-MM-dd',
         clear: true,
         startTime: '',
         endTime: '',
@@ -364,7 +364,6 @@
         if (this.dialog1Show) {
           this.getMemberDetail(autoId);
         }
-
       },
       handleDialogAction(action, id) {
         if (action === '确定') {

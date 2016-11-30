@@ -5,6 +5,7 @@ import VueI18n from 'vue-i18n';
 import VueValidator from 'vue-validator';
 import VueResource from 'vue-resource';
 
+
 import 'assets/fonts/glyphicons-pro/glyphicons-pro.css'
 import 'assets/fonts/icomoon/icomoon.css'
 import 'assets/skin/default_skin/css/theme.css'
@@ -13,24 +14,21 @@ import '../static/styles/main.css'
 import '../static/styles/dialog.css'
 import '../static/styles/weui.css'
 import App from './App'
-import Login from './pages/Login'
-import Main from './pages/Main'
 import env from '../config/dev.env'
 import store from './vuex/store'
-import Member from './pages/user/Member.vue'
-import MemberLevel from './pages/user/MemberLevel.vue'
 import lodash from 'lodash'
-import publish from 'pages/sh/publish.vue'
-import welcome from 'pages/welcome.vue'
 import '../config/conf'
 import * as filters from './filters'
 
+//文本编辑器
 import editor from 'vue-summernote'
+import routerMap from './routers'
 // 载入bootstrap.js
 require('bootstrap')
 // 载入bootstrap以及summernote的样式
 // 这里需要你的脚手架工具具有加载css的能力
 require('summernote/dist/summernote.css')
+
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
@@ -72,27 +70,7 @@ Vue.validator('url', (val) => /^(http\u003a\/\/|https\u003a\/\/)(.{4,})$/.test(v
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
-
-// var jQuery = require('jquery');
-// var $ = jQuery;
-// window.$ = $;
-
-var router = new VueRouter({
-  history:true,
-  saveScrollPosition: false,
-  transitionOnLoad: true,
-  linkActiveClass: 'active',
-  routes: [
-    {path: '/login', name:'login', component: Login},
-    {path: '/main', name:'main',component: Main,children:[
-      {path:'/welcome',name:'welcome',component:welcome},
-      {path:'/member',name:'member',component:Member},
-      {path:'/memberLevel',name:'memberLevel',component:MemberLevel},
-      {path:'/publish',name:'publish',component:publish}
-    ]},
-    {path: '*', redirect: '/login'},
-  ]
-});
+var router=routerMap();
 
 /* eslint-disable no-new */
 new Vue({

@@ -5,18 +5,12 @@
         <div class="bs-component">
           <div class="input-group">
             <span class="input-group-addon">{{label}}</span>
-            <label class="field input-text">
               <span class="label label-danger" v-if="isRequired" v-show="error.required">必填</span>
               <input class="form-control datepicker-input" :class="{'with-reset-button': clearButton}" type="text"
                      :placeholder="placeholder"
                      @click="inputClick"
-                     :value="inputValue"
-                     />
-              <button v-if="clearButton && value" type="button" class="close" @click="inputValue = ''">
-                <span>&times;</span>
-              </button>
-            </label>
-            <span class="input-group-addon"><i class="icon"></i></span>
+                     :value="inputValue"/>
+            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
           </div>
         </div>
       </div>
@@ -103,6 +97,8 @@
 </template>
 
 <script>
+  import {isUndefined} from '../../components/utils/utils'
+  import moment from 'moment'
   export default {
     name: 'calendar',
     props: {
@@ -117,6 +113,7 @@
         type: String
       },
       format: {
+        type:String,
         default: 'MM/dd/yyyy'
       },
       disabledDaysOfWeek: {
@@ -531,7 +528,8 @@
             }
           }
         }
-        this.$emit('on-date-change',this.inputValue)
+//        var val= isUndefined(this.inputValue) || this.inputValue === '' ? null : moment(this.inputValue).format(this.format);
+        this.$emit('on-date-change',this.inputValue);
       }
     }
   }
