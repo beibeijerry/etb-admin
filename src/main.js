@@ -28,7 +28,8 @@ require('bootstrap')
 // 载入bootstrap以及summernote的样式
 // 这里需要你的脚手架工具具有加载css的能力
 require('summernote/dist/summernote.css')
-
+//上传js
+require('imports?define=>false!blueimp-file-upload')
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
@@ -37,7 +38,7 @@ Vue.use(VueResource);
 Vue.use(lodash);
 
 Vue.use(editor,{
-  dialogsFade:true
+  dialogsFade:false
 });
 
 

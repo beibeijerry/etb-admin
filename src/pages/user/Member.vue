@@ -28,20 +28,14 @@
                         <div class="col-md-3">
                           <div class="section">
                             <div class="form-group">
-                              <calendar label="注册开始时间" :value="startTime" :disabled-days-of-week="disabled"
-                                        :format="format"
-                                        :clearButton="clear" :placeholder="placeholder"
-                                        @on-date-change="dateStartChange"></calendar>
+                              <date-picker label="注册开始时间" :date="startTime" :option="option" ></date-picker>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3">
                           <div class="section">
                             <div class="form-group">
-                              <calendar label="注册截止时间" :value="endTime" :disabled-days-of-week="disabled"
-                                        :format="format"
-                                        :clearButton="clear" :placeholder="placeholder"
-                                        @on-date-change="dateEndChange"></calendar>
+                              <date-picker label="注册截止时间" :date="endTime" :option="option" ></date-picker>
                             </div>
                           </div>
                         </div>
@@ -52,13 +46,6 @@
                             <div class="form-group">
                               <item-select title="会员级别" :itemData="memberLevels" valKey="grade" nameKey="name"
                                            @on-change="levelChange"></item-select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="section">
-                            <div class="form-group">
-                              <file-upload  label="主图"></file-upload>
                             </div>
                           </div>
                         </div>
@@ -291,30 +278,38 @@
 <script>
   import pager from '../../components/table-pager/Pager.vue'
   import inputText from '../../components/input-component/input-text.vue'
-  import calendar from "../../components/calendar-component/calendar.vue"
   import itemSelect from '../../components/dropdownList/Dropdown.vue'
   import {isUndefined} from '../../components/utils/utils'
   import {mapGetters} from 'vuex'
   import moment from 'moment'
   import dialog from '../../components/dialog'
-  import upload from '../../components/upload'
+  import myDatepicker from 'components/calendar-component/datepicker'
   export default{
     data(){
       return {
+        dialog1Show:false,
         search_info: {
           grade: '',
-          startTime: this.startTime,
-          endTime: this.endTime
+          startTime:"",
+          endTime: ""
         },
-        disabled: [],
-        format: 'yyyy-MM-dd',
-        clear: true,
-        startTime: '',
-        endTime: '',
-        placeholder: '',
-        dialog1Show: false,
-        the_detail: {},
-        width: 960
+        startTime: {
+          time: ''
+        },
+        endTime: {
+          time: ''
+        },
+        option: {
+          type: 'min',
+          week: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+          month: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+          format: 'YYYY-MM-DD HH:mm',
+          placeholder: '请选择时间',
+          buttons: {
+            ok: '确定',
+            cancel: '取消'
+          }
+        }
       }
     },
     computed: {
@@ -328,10 +323,9 @@
     components: {
       pager,
       'inputText': inputText,
-      calendar,
       itemSelect,
       'etbDialog': dialog,
-      'fileUpload':upload,
+      'date-picker': myDatepicker
     },
 
     mounted: function () {
@@ -339,17 +333,12 @@
       this.getPageList(1);
     },
     methods: {
-      dateStartChange: function (val) {
-        this.search_info.startTime = isUndefined(val) || val === '' ? null : moment(val).format('YYYY-MM-DD HH:mm:ss');
-
-      },
-      dateEndChange: function (val) {
-        this.search_info.endTime = isUndefined(val) || val === '' ? null : moment(val).format('YYYY-MM-DD HH:mm:ss');
-      },
       levelChange: function (val) {
         this.search_info.grade = val;
       },
       search: function () {
+        this.search_info.startTime = isUndefined(this.startTime.time) || this.startTime.time === '' ? null : moment(this.startTime.time).format('YYYY-MM-DD HH:mm:ss');
+        this.search_info.endTime = isUndefined(this.endTime.time) || this.endTime.time === '' ? null : moment(this.endTime.time).format('YYYY-MM-DD HH:mm:ss');
         this.getPageList(1);
       },
       getPageList: function (curPage) {

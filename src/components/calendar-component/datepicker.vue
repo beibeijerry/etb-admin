@@ -1,12 +1,12 @@
 <template>
-  <div class="cov-vue-date">
+  <div>
     <div class="col-lg-12">
       <div class="bs-component">
         <div class="input-group">
           <span class="input-group-addon">{{label}}</span>
             <span class="label label-danger" v-if="isRequired" v-show="error.required">必填</span>
             <span class="form-control" @click="showCheck"
-                  @foucus="showCheck">{{date.time}}</span>
+                  @foucus="showCheck" >{{date.time}}</span>
             <input type="hidden" title="input date" readonly="readonly"
                    :placeholder="option.placeholder" v-model="date.time" :required="required"/>
           <span class="input-group-addon">
@@ -474,12 +474,12 @@
           return {
             type: 'day',
             SundayFirst: false,
-            week: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-            month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            week: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            month: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
             format: 'YYYY-MM-DD',
             color: {
               checked: '#F50057',
-              header: '#3f51b5',
+              header: '#428bca',
               headerText: '#fff'
             },
             inputStyle: {
@@ -494,8 +494,8 @@
             },
             placeholder: 'when?',
             buttons: {
-              ok: 'OK',
-              cancel: 'Cancel'
+              ok: '确定',
+              cancel: '取消'
             },
             overlayOpacity: 0.5,
             dismissible: true

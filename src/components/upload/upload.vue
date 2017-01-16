@@ -1,105 +1,106 @@
 <template>
-  <div class="col-md-12">
-    <div class="bs-component">
-      <div class="input-group">
-        <span class="input-group-addon">
-         <i class="mr5" :class="icon" v-if="icon"></i>{{label}}
+  <div class="upload">
+
+        <span class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>上传</span>
+            <input class="fileupload" type="file" name="file" hidden="true">
         </span>
-          <!--<input class="field file" v-show="!isButton" :class="{'state-error':!isValid}">-->
-          <!--<span class="button btn-primary"> {{title}}</span>-->
-          <!--<input type="file" class="gui-file" v-model="selected" >-->
-          <!--<input type="text"-->
-                 <!--class="gui-input"-->
-                 <!--:placeholder="placeholder"-->
-                 <!--v-model="result"-->
-                 <!--required="isRequired">-->
-        <!--</label>-->
-        <!--<button v-model="selected"-->
-                <!--class="btn btn-default"-->
-                <!--v-show="isButton">-->
-          <!--{{title}}-->
-        <!--</button>-->
+
+    <div class="progress" >
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+           aria-valuemax="100" :style="{width:progress}">
+        <span class="sr-only">{{progress}}% Complete</span>
+      </div>
+    </div>
+    <div class="preview" v-if="fileType=='img'">
+      <div class="upload-image mw140 mr20 mb20" v-for="f in rData" v-show="rData.length > 0">
+        <img :class="item-clip" :src="f.fullImageUrl" v-if="f.fileName"/>
+        <a class="badge badge-danger" v-if="f.uploaded" @click="deleteUploadFile(index,f)">x</a>
       </div>
     </div>
   </div>
-
 </template>
 <script>
-
+  import lodash from 'lodash'
   export default{
     name: 'file-upload',
     props: {
-      //过滤文件类型,image,video
-      filterType: {
-        type: String
-      },
-      label: {
-        type: String
-      },
-      title: {
-        type: String
-      },
-      placeholder:{
-        type:String
-      }
-
-    },
-    data(){
-      return {
-        isButton:true,
-        result:{},
-        selected:[],
-        files: [],
-        //文件过滤器，只能上传图片
-        filters: [
-          {
-            name: "imageFilter",
-            fn(file){
-              var type = '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
-              return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+      fileType:{type:String},
+      // 上传选项
+      uploadOptions: {
+        type: Object,
+        default () {
+          // 同时使用多个组件 instance
+          let upload = this;
+          let headers = {};
+          var sessionId = window.sessionStorage.getItem("sessionId");
+          if (sessionId != null)
+            headers['session-id'] = sessionId;
+          headers['user-sys'] = 'admin';
+          headers['version'] = 'admin';
+          headers['client-ip'] = 'admin';
+          headers['client-key'] = 'admin';
+          headers['client-net-env'] = 'admin';
+          return {
+            url: 'https://' + window.shop.domain + '/api/sys/files/upload',
+            headers: headers,
+            dataType: 'json',
+            progress (e, data) {
+              upload.progress = parseInt(data.loaded / data.total * 100, 10) + '%';
+              if(parseInt(data.loaded / data.total * 100, 10) ==100)
+              {
+                upload.progress='0%';
+              }
+            },
+            done (e, data)  {
+              upload.rData.push({fileName:data.result.value,fullImageUrl:'http://'+window.shop.img+'/'+data.result.value,uploaded:true})
+              upload.text = '上传成功';
+              upload.progress = parseInt(data.loaded / data.total * 100, 10) + '%';
+              let tmp = [];
+              lodash.forEach(upload.rData, function (f) {
+                tmp.push(f.fileName);
+              });
+              upload.returnData.val = tmp.join(',');
+              console.log(upload.returnData.val);
+            },
+            fail (e, data) {
+              console.log(e);
             }
           }
-        ],
-        //回调函数绑定
-        cbEvents: {
-          onCompleteUpload: (file, response, status, header)=> {
-            console.log(file);
-            console.log("finish upload;")
-          }
-        },
-        //xhr请求附带参数
-        reqopts: {
-          formData: {
-            tokens: 'tttttttttttttt'
-          },
-          responseType: 'json',
-          withCredentials: false
-        },
-        url: 'https://' + window.shop.domain + 'sys/files/upload'
+        }
+      },
+      returnData: {
+        type: Object,
+        default () {
+          return {}
+        }
+      }
+    },
+    watch: {
+      returnData: function (val) {
+        this.rData = val;
+      }
+    },
+    mounted () {
+      this.init()
+    },
+    data () {
+      return {
+        text: '',
+        prefix_url: '',
+        progress: '0%',
+        rData: []
       }
     },
     methods: {
-      onStatus(file){
-        if (file.isSuccess) {
-          return "上传成功";
-        } else if (file.isError) {
-          return "上传失败";
-        } else if (file.isUploading) {
-          return "正在上传";
-        } else {
-          return "待上传";
-        }
+      init () {
+        this.progress = '0%';
+        $(this.$el).find('input.fileupload').fileupload(this.uploadOptions);
       },
-      uploadItem(file){
-        //单个文件上传
-        file.upload();
-      },
-      uploadAll(){
-        //上传所有文件
-        this.$broadcast('DO_POST_FILE');
+      deleteUploadFile:function (index,file) {
+        this.rData.splice(index,1);
       }
-    },
-    components: {
     }
   }
 </script>
